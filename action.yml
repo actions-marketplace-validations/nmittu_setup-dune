@@ -14,6 +14,7 @@ runs:
         sudo apt-get install opam
         opam init
         eval $(opam env --switch=default)
+      shell: bash
     - name: Cache OPAM packages
       id: cache-opam
       uses: actions/cache@v3
@@ -25,3 +26,4 @@ runs:
       run: |
         opam install dune ${ inputs.packages } -y
         eval $(opam config env)
+      shell: bash
