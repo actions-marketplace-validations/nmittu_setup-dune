@@ -1,0 +1,27 @@
+name: 'Setup Dune'
+description: 'install/setup ocaml and dune'
+inputs:
+  packages:
+    description: 'OPAM packages to install'
+    required: false
+    default: ''
+runs:
+  using: "composite"
+  steps:
+    - name: Install dune
+      run: |
+        sudo apt-get update
+        sudo apt-get install opam
+        opam init
+        eval $(opam env --switch=default)
+    - name: Cache OPAM packages
+      id: cache-opam
+      uses: actions/cache@v3
+      with:
+        path: ~/.opam
+        key: ${{ runner.os }}-${ inputs.packages }-opam
+    - name: Install opam packages
+      if: steps.cache-opam.outputs.cache-hit != 'true'
+      run: |
+        opam install dune ${ inputs.packages } -y
+        eval $(opam config env)
