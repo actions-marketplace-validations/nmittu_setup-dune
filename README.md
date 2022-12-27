@@ -8,7 +8,7 @@ The action will cache opam packages to speed up builds.
 You can use this action as follows:
 ```yml
 - name: Setup dune
-  uses: nmittu/setup-dune-action@v1
+  uses: nmittu/setup-dune@v1
   with:
     packages: js_of_ocaml ppx_jane js_of_ocaml-ppx incr_dom ojs
 - name: build
