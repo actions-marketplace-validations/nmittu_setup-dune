@@ -27,5 +27,5 @@ runs:
         opam install dune ${{ inputs.packages }} -y
       shell: bash
     - name: Eval opem env
-      run: eval $(opam config env)
+      run: echo "eval $(opam config env)" >> ~/.bash_profile
       shell: bash
