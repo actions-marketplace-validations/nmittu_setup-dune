@@ -25,5 +25,7 @@ runs:
       if: steps.cache-opam.outputs.cache-hit != 'true'
       run: |
         opam install dune ${{ inputs.packages }} -y
-        eval $(opam config env)
+      shell: bash
+    - name: Eval opem env
+      run: eval $(opam config env)
       shell: bash
