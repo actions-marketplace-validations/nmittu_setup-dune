@@ -11,6 +11,7 @@ You can use this action as follows:
   uses: nmittu/setup-dune@v1
   with:
     packages: js_of_ocaml ppx_jane js_of_ocaml-ppx incr_dom ojs
+    compiler: 4.12.0
 - name: build
   run: |
     eval $(opam config env)

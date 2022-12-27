@@ -8,6 +8,10 @@ inputs:
     description: 'OPAM packages to install'
     required: false
     default: ''
+  compiler:
+    description: 'Compiler version to use'
+    required: false
+    default: 'stable'
 runs:
   using: "composite"
   steps:
@@ -27,6 +31,8 @@ runs:
     - name: Install opam packages
       if: steps.cache-opam.outputs.cache-hit != 'true'
       run: |
+        opam switch create ${{ inputs.compiler }}
+        opam switch set ${{ inputs.compiler }}
         opam install dune ${{ inputs.packages }} -y
       shell: bash
     - name: Eval opem env
