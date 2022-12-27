@@ -11,7 +11,7 @@ inputs:
   compiler:
     description: 'Compiler version to use'
     required: false
-    default: 4.12.0
+    default: "4.12.0"
 runs:
   using: "composite"
   steps:
@@ -27,7 +27,7 @@ runs:
       uses: actions/cache@v3
       with:
         path: ~/.opam
-        key: ${{ runner.os }}-${ inputs.compiler }-${{ inputs.packages }}-opam
+        key: ${{ runner.os }}-${{ inputs.compiler }}-${{ inputs.packages }}-opam
     - name: Install opam packages
       if: steps.cache-opam.outputs.cache-hit != 'true'
       run: |
