@@ -1,5 +1,7 @@
 name: 'Setup Dune'
 description: 'install/setup ocaml and dune'
+icon: 'box'
+color: 'orange'
 inputs:
   packages:
     description: 'OPAM packages to install'
